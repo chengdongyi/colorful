@@ -1,0 +1,37 @@
+server:
+  port: 18081
+
+spring:
+  application:
+    # 应用名称
+    name: colorful-service-consumer
+  jackson:
+    default-property-inclusion: non_null
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.12.12.188:8848
+    # Sentinel配置
+    sentinel:
+      # 取消Sentinel控制台懒加载
+      eager: true
+      transport:
+        port: 8801
+        dashboard: 127.0.0.1:8080
+      datasource:
+        ds1:
+          file:
+            file: classpath:json/flowrule.json
+            data-type: json
+            rule-type: flow
+
+feign:
+  sentinel:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
