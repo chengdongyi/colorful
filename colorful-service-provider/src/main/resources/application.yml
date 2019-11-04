@@ -1,0 +1,19 @@
+server:
+  port: 18082
+
+spring:
+  application:
+    name: colorful-service-provider
+  jackson:
+    default-property-inclusion: non_null
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.12.12.188:8848
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
