@@ -1,0 +1,26 @@
+server:
+  port: 18084
+
+spring:
+  application:
+    name: colorful-service-rocketmq-provider
+  jackson:
+    default-property-inclusion: non_null
+
+  mail:
+    username: 582042681@qq.com
+    # 授权码
+    password: klzyewdvcilkbbih
+    host: smtp.qq.com
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
+    default-encoding: UTF-8
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
