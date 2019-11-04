@@ -1,0 +1,25 @@
+server:
+  port: 18083
+
+spring:
+  application:
+    name: colorful-service-rocketmq-consumer
+  jackson:
+    default-property-inclusion: non_null
+
+  cloud:
+    stream:
+      rocketmq:
+        binder:
+          name-server: 10.1.31.39:9876
+          # namesrv-addr: 192.168.218.39:9876
+        bindings:
+          input: {consumer.orderly: true}
+      bindings:
+        input: {destination: test-topic, content-type: application/json, group: test-group, consumer.maxAttempts: 1}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
