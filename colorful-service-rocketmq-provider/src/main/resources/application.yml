@@ -1,0 +1,25 @@
+server:
+  port: 18084
+
+spring:
+  application:
+    name: colorful-service-rocketmq-provider
+  jackson:
+    default-property-inclusion: non_null
+
+  cloud:
+    stream:
+      rocketmq:
+        binder:
+          # RocketMQ 服务器地址
+          name-server: 10.1.31.39:9876
+          # namesrv-addr: 192.168.218.39:9876
+      bindings:
+        # 这里是个 Map 类型参数，{} 为 YAML 中 Map 的行内写法
+        output: {destination: test-topic, content-type: application/json}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
